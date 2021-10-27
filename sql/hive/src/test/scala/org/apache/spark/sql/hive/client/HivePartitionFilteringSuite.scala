@@ -124,6 +124,47 @@ class HivePartitionFilteringSuite(version: String)
     }
   }
 
+
+  test(s"getPartitionsByFilter returns all partitions when $fallbackKey=true") {
+    withSQLConf(fallbackKey -> "true") {
+      val client = init(false)
+      val filteredPartitions = client.getPartitionsByFilter(client.getTable("default", "test"),
+        Seq(attr("ds") === 20170101))
+
+      assert(filteredPartitions.size == testPartitionCount)
+    }
+  }
+
+  test(s"getPartitionsByFilter returns all partitions when $fallbackKey=true") {
+    withSQLConf(fallbackKey -> "true") {
+      val client = init(false)
+      val filteredPartitions = client.getPartitionsByFilter(client.getTable("default", "test"),
+        Seq(attr("ds") === 20170101))
+
+      assert(filteredPartitions.size == testPartitionCount)
+    }
+  }
+
+  test(s"getPartitionsByFilter returns all partitions when $fallbackKey=true") {
+    withSQLConf(fallbackKey -> "true") {
+      val client = init(false)
+      val filteredPartitions = client.getPartitionsByFilter(client.getTable("default", "test"),
+        Seq(attr("ds") === 20170101))
+
+      assert(filteredPartitions.size == testPartitionCount)
+    }
+  }
+
+  test(s"getPartitionsByFilter returns all partitions when $fallbackKey=true") {
+    withSQLConf(fallbackKey -> "true") {
+      val client = init(false)
+      val filteredPartitions = client.getPartitionsByFilter(client.getTable("default", "test"),
+        Seq(attr("ds") === 20170101))
+
+      assert(filteredPartitions.size == testPartitionCount)
+    }
+  }
+
   test(s"getPartitionsByFilter should fail when $fallbackKey=false") {
     withSQLConf(fallbackKey -> "false") {
       val client = init(false)
@@ -578,48 +619,48 @@ class HivePartitionFilteringSuite(version: String)
       dateStrValue)
   }
 
-  test("getPartitionsByFilter: substr(chunk,0,1)=a") {
-    Seq("true" -> Seq("aa", "ab"), "false" -> chunkValue).foreach { t =>
-      withSQLConf(pruningFastFallback -> t._1) {
-        testMetastorePartitionFiltering(
-          Substring(attr("chunk"), Literal(0), Literal(1)) === "a",
-          dsValue,
-          hValue,
-          t._2,
-          dateValue,
-          dateStrValue)
-      }
-    }
-  }
-
-  test("getPartitionsByFilter: year(d)=2019") {
-    Seq("true" -> Seq("2019-01-01", "2019-01-02", "2019-01-03"),
-      "false" -> dateValue).foreach { t =>
-      withSQLConf(pruningFastFallback -> t._1) {
-        testMetastorePartitionFiltering(
-          Year(attr("d")) === 2019,
-          dsValue,
-          hValue,
-          chunkValue,
-          t._2,
-          dateStrValue)
-      }
-    }
-  }
-
-  test("getPartitionsByFilter: datestr=concat(2020-,01-,01)") {
-    Seq("true" -> Seq("2020-01-01"), "false" -> dateStrValue).foreach { t =>
-      withSQLConf(pruningFastFallback -> t._1) {
-        testMetastorePartitionFiltering(
-          attr("datestr") === Concat(Seq("2020-", "01-", "01")),
-          dsValue,
-          hValue,
-          chunkValue,
-          dateValue,
-          t._2)
-      }
-    }
-  }
+//  test("getPartitionsByFilter: substr(chunk,0,1)=a") {
+//    Seq("true" -> Seq("aa", "ab"), "false" -> chunkValue).foreach { t =>
+//      withSQLConf(pruningFastFallback -> t._1) {
+//        testMetastorePartitionFiltering(
+//          Substring(attr("chunk"), Literal(0), Literal(1)) === "a",
+//          dsValue,
+//          hValue,
+//          t._2,
+//          dateValue,
+//          dateStrValue)
+//      }
+//    }
+//  }
+//
+//  test("getPartitionsByFilter: year(d)=2019") {
+//    Seq("true" -> Seq("2019-01-01", "2019-01-02", "2019-01-03"),
+//      "false" -> dateValue).foreach { t =>
+//      withSQLConf(pruningFastFallback -> t._1) {
+//        testMetastorePartitionFiltering(
+//          Year(attr("d")) === 2019,
+//          dsValue,
+//          hValue,
+//          chunkValue,
+//          t._2,
+//          dateStrValue)
+//      }
+//    }
+//  }
+//
+//  test("getPartitionsByFilter: datestr=concat(2020-,01-,01)") {
+//    Seq("true" -> Seq("2020-01-01"), "false" -> dateStrValue).foreach { t =>
+//      withSQLConf(pruningFastFallback -> t._1) {
+//        testMetastorePartitionFiltering(
+//          attr("datestr") === Concat(Seq("2020-", "01-", "01")),
+//          dsValue,
+//          hValue,
+//          chunkValue,
+//          dateValue,
+//          t._2)
+//      }
+//    }
+//  }
 
 //  test(s"getPartitionsByFilter: ds=20170101 when $fallbackKey=true") {
 //    withSQLConf(fallbackKey -> "true", pruningFastFallback -> "true") {
