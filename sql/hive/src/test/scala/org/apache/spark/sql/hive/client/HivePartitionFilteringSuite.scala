@@ -621,16 +621,16 @@ class HivePartitionFilteringSuite(version: String)
     }
   }
 
-  test(s"getPartitionsByFilter: ds=20170101 when $fallbackKey=true") {
-    withSQLConf(fallbackKey -> "true", pruningFastFallback -> "true") {
-      val client = init(false)
-      val filteredPartitions = client.getPartitionsByFilter(client.getTable("default", "test"),
-        Seq(attr("ds") === 20170101))
-
-      assert(filteredPartitions.size == 1 * hValue.size * chunkValue.size *
-        dateValue.size * dateStrValue.size)
-    }
-  }
+//  test(s"getPartitionsByFilter: ds=20170101 when $fallbackKey=true") {
+//    withSQLConf(fallbackKey -> "true", pruningFastFallback -> "true") {
+//      val client = init(false)
+//      val filteredPartitions = client.getPartitionsByFilter(client.getTable("default", "test"),
+//        Seq(attr("ds") === 20170101))
+//
+//      assert(filteredPartitions.size == 1 * hValue.size * chunkValue.size *
+//        dateValue.size * dateStrValue.size)
+//    }
+//  }
 
   private def testMetastorePartitionFiltering(
       filterExpr: Expression,
