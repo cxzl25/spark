@@ -125,7 +125,7 @@ class HivePartitionFilteringSuite(version: String)
   }
 
 
-  test(s"getPartitionsByFilter returns all partitions when $fallbackKey=true") {
+  test(s"getPartitionsByFilter2 returns all partitions when $fallbackKey=true") {
     withSQLConf(fallbackKey -> "true") {
       val client = init(false)
       val filteredPartitions = client.getPartitionsByFilter(client.getTable("default", "test"),
@@ -135,7 +135,7 @@ class HivePartitionFilteringSuite(version: String)
     }
   }
 
-  test(s"getPartitionsByFilter returns all partitions when $fallbackKey=true") {
+  test(s"getPartitionsByFilter3 returns all partitions when $fallbackKey=true") {
     withSQLConf(fallbackKey -> "true") {
       val client = init(false)
       val filteredPartitions = client.getPartitionsByFilter(client.getTable("default", "test"),
@@ -145,7 +145,7 @@ class HivePartitionFilteringSuite(version: String)
     }
   }
 
-  test(s"getPartitionsByFilter returns all partitions when $fallbackKey=true") {
+  test(s"getPartitionsByFilter4 returns all partitions when $fallbackKey=true") {
     withSQLConf(fallbackKey -> "true") {
       val client = init(false)
       val filteredPartitions = client.getPartitionsByFilter(client.getTable("default", "test"),
@@ -155,7 +155,7 @@ class HivePartitionFilteringSuite(version: String)
     }
   }
 
-  test(s"getPartitionsByFilter returns all partitions when $fallbackKey=true") {
+  test(s"getPartitionsByFilter5 returns all partitions when $fallbackKey=true") {
     withSQLConf(fallbackKey -> "true") {
       val client = init(false)
       val filteredPartitions = client.getPartitionsByFilter(client.getTable("default", "test"),
